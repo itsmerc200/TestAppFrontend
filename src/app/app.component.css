@@ -1,0 +1,24 @@
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 57px;
+  background-color: #F48023; /* $primary-color */
+  height: auto;
+}
+
+a.active {
+  background: #141a33; /* $secondary-color */
+}
+
+a {
+  font-weight: 300;
+  font-size: 15px;
+  border-radius: 0px;
+  color: #ffffff; /* $White */
+}
+
+a.ant-btn:hover {
+  color: #ffffff; /* $White */
+  background: #141a33; /* $secondary-color */
+}
