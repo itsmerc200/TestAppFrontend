@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Route, Router } from '@angular/router';
+import { UserStorageService } from '../services/user-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,15 @@ export class LoginComponent {
       res => {
 
 
-        this.message.success('Login successful!', { nzDuration: 4000 });
+        this.message.success('Login successful!', { nzDuration: 5000 });
+
+          const user = {
+            id : res.id,
+            role: res.role
+          }
+
+          UserStorageService.saveUser(user);
+        console.log(res);
 
       },
 
@@ -43,7 +52,7 @@ export class LoginComponent {
       error => {
         this.message.error(
           `Wrong Email or Password!`,
-          { nzDuration: 4000 }
+          { nzDuration: 5000 }
         );
       }
     );
