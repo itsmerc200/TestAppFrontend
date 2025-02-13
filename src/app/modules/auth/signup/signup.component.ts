@@ -12,8 +12,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {  // Implement OnInit interface
-
+export class SignupComponent implements OnInit {  
   constructor(
     private fb: FormBuilder,
     private message: NzMessageService,
@@ -23,7 +22,7 @@ export class SignupComponent implements OnInit {  // Implement OnInit interface
 
   validateForm!: FormGroup;
 
-  ngOnInit(): void {  // Corrected ngOninit to ngOnInit
+  ngOnInit(): void {  
     this.validateForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
