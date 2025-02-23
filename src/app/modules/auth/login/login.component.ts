@@ -44,11 +44,13 @@ export class LoginComponent {
           }
 
           UserStorageService.saveUser(user);
+
           if(UserStorageService.isAdminLoggedIn()){
             this.router.navigateByUrl('admin/dashboard')
-          }else if (UserStorageService.isUserLoggedIn()){
+          }else if(UserStorageService.isUserLoggedIn()){
             this.router.navigateByUrl('user/dashboard')
           }
+
         console.log(res);
 
       },
