@@ -1,7 +1,7 @@
 <div class="bg">
     <div class="parent">
         <div class="child">
-            <form nz-form [formGroup]="testForm" class="login-form">
+            <form nz-form [formGroup]="testForm" class="login-form"  (ngSubmit)="submitForm()">
                 <nz-form-label [nzNoColon]="'true'">Title</nz-form-label>
                 <nz-form-item>
                     <nz-form-control nzErrorTip="This input is required!">
@@ -15,7 +15,7 @@
                         <input type="number" nz-input formControlName="time" placeholder="Time Seconds Per Question" />
                     </nz-form-control>
                 </nz-form-item>
-
+ 
                 <nz-form-label [nzNoColon]="'true'">Description</nz-form-label>
                 <nz-form-item>
                     <nz-form-control nzErrorTip="This input is required!">
