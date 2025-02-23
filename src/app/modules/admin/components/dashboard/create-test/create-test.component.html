@@ -1,1 +1,23 @@
-<p>create-test works!</p>
+<div class="bg">
+    <div class="parent">
+        <div class="child">
+            <form nz-form [formGroup]="testForm" class="login-form">
+                <nz-form-label [nzNoColon]="'true'">Title</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="This input is required!">
+                        <input type="text" nz-input formControlName="title" placeholder="Title" />
+                    </nz-form-control>
+                </nz-form-item>
+
+                <nz-form-label [nzNoColon]="'true'">Time Per Question</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="This input is required!">
+                        <input type="number" nz-input formControlName="time" placeholder="Time Seconds Per Question" />
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+        </div>
+    </div>
+</div>
+
+I
