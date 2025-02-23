@@ -15,6 +15,21 @@
                         <input type="number" nz-input formControlName="time" placeholder="Time Seconds Per Question" />
                     </nz-form-control>
                 </nz-form-item>
+
+                <nz-form-label [nzNoColon]="'true'">Description</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="This input is required!">
+                        <textarea rows="4" nz-input formControlName="description" placeholder="Description">
+                </textarea>
+                    </nz-form-control>
+                </nz-form-item>
+
+                <div style="padding-bottom: 30px;">
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Submit</button>
+                </div>
+
+                I
+
             </form>
         </div>
     </div>
