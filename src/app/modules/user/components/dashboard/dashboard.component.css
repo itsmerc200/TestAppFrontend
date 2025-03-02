@@ -1,0 +1,38 @@
+.row{ background-color: #f5f5f5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 5px;
+    }
+    
+    .test {  /* Corrected selector */
+        width: 100%;
+        margin: auto;
+        box-shadow: 0px 7px 29px 0px rgba(100, 100, 111, 0.2);
+        border: 0.2px solid #000; /* Increase border thickness */
+        border-radius: 5px; /* Keep corners rounded */
+        padding: 15px; /* Add padding */
+    }
+    
+    
+      .main {
+            padding: 150px;
+            margin-top: -100px;
+    
+        }
+    
+        .button{
+            float: right;
+            margin-right: 10px;
+        }
+    
+        .button-group {
+        display: flex;
+        justify-content: flex-end; /* Aligns buttons to the right */
+        gap: 10px; /* Adds spacing between buttons */
+        margin-top: 10px; /* Adjust spacing from content */
+    }
+    
