@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {  
     this.validateForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]],
+      password: [null, [Validators.required,]],
       name: [null, [Validators.required]],
     });
   }
@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
         this.message.success('Registration successful!', { nzDuration: 5000 });
          
 
-      this.router.navigateByUrl("/login"); 
+       this.router.navigateByUrl("/login"); 
     },error => {
         this.message.error(
           `${error.error}`,   
