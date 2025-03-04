@@ -14,12 +14,17 @@ export class TestService {
   constructor(private http: HttpClient) { }
 
   getAllTest(): Observable<any> {
-      return this.http.get(BASIC_URL + `api/test`);
-    }
+    return this.http.get(BASIC_URL + `api/test`);
+  }
 
-  getTestQuestions(id:number): Observable<any> {
+
+  getTestQuestions(id: number): Observable<any> {
     return this.http.get(BASIC_URL + `api/test/${id}`);
-  } 
-    
-    
+  }
+
+  submitTest(data:any): Observable<any> {
+    return this.http.post(BASIC_URL + `api/test/submit-test`, data);
+  }
+
+
 }

@@ -4,3 +4,19 @@
     margin-top: 30px;
     border-radius: 5px;
 }
+
+.time-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.timer {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4d4f; /* Red color to indicate urgency */
+    background-color: #fff3f3; /* Light red background */
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+    border: 1px solid #ff4d4f;
+}
