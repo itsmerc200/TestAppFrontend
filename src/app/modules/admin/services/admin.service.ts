@@ -31,4 +31,14 @@ export class AdminService {
     return this.http.get(BASIC_URL + `api/test/test-result`);
   }
 
+  deleteQuestion(id: number): Observable<any> {
+    return this.http.delete(BASIC_URL + `api/test/question/${id}`, { responseType: 'text' });
+  }
+  
+
+  deleteTest(id: number): Observable<any> {
+    return this.http.delete(BASIC_URL + `api/test/${id}`, { responseType: 'text' }); 
+  }
+  
+
 }

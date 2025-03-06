@@ -40,6 +40,23 @@ export class DashboardComponent {
     })  
   }
 
+  deleteTest(testId: number) {
+    if (confirm('Are you sure you want to delete this test?')) {
+      this.testService.deleteTest(testId).subscribe({
+        next: () => {
+          this.test = this.test.filter(t => t.id !== testId);
+          this.notification.success('SUCCESS', 'Test deleted successfully!', { nzDuration: 3000 });
+        },
+        error: (error) => {
+          console.error('Deletion error:', error);
+          this.notification.error('ERROR', 'Failed to delete test! Try Again.', { nzDuration: 5000 });
+        }
+      });
+    }
+  }
+  
+  
+
   getFormatedTime(time): string{
       const minutes = Math.floor(time/60);
       const seconds =   time % 60;
@@ -47,5 +64,7 @@ export class DashboardComponent {
 
 
   }
+
+  
 
 }
