@@ -40,5 +40,11 @@ export class AdminService {
     return this.http.delete(BASIC_URL + `api/test/${id}`, { responseType: 'text' }); 
   }
   
+  uploadQuestions(testId: number, formData: FormData): Observable<any> {
+    return this.http.post(BASIC_URL + `api/test/upload-questions/${testId}`, formData, { responseType: 'text' });
+  }
 
+  // uploadQuestionsInTest(testId: number, formData: FormData): Observable<any> {
+  //   return this.http.post(`${BASIC_URL}api/test/upload-questions/${testId}`, formData, { responseType: 'text' });
+  // }
 }
