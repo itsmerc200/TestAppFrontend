@@ -12,7 +12,9 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent implements OnInit {  
+export class SignupComponent implements OnInit {
+  validateForm!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private message: NzMessageService,
@@ -20,28 +22,42 @@ export class SignupComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  validateForm!: FormGroup;
-
-  ngOnInit(): void {  
+  ngOnInit(): void {
     this.validateForm = this.fb.group({
-      email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required,]],
-      name: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]], // Email is required and must be valid
+      password: [null, [Validators.required, Validators.minLength(4)]], // Password must be at least 4 characters long
+      name: [null, [Validators.required, Validators.minLength(2)]] // Name is required and must be at least 2 characters long
     });
   }
 
-  submitForm() {  
-    this.authService.register(this.validateForm.value).subscribe(res => {
-        this.message.success('Registration successful!', { nzDuration: 4000 });
-         
+  submitForm() {
+    if (this.validateForm.invalid) {
+      // Mark all fields as touched to display validation errors
+      this.markFormGroupTouched(this.validateForm);
+      return;
+    }
 
-       this.router.navigateByUrl("/login"); 
-    },error => {
-        this.message.error(
-          `${error.error}`,   
-          { nzDuration: 5000 }
-        );
+    this.authService.register(this.validateForm.value).subscribe(
+      (res) => {
+        this.message.success('Registration successful!', { nzDuration: 4000 });
+        this.router.navigateByUrl('/login');
+      },
+      (error) => {
+        this.message.error(`${error.error}`, { nzDuration: 5000 });
       }
     );
+  }
+
+  /**
+   * Marks all controls in a form group as touched to trigger validation messages.
+   * @param formGroup The form group to mark as touched.
+   */
+  private markFormGroupTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach((control) => {
+      control.markAsTouched();
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
   }
 }

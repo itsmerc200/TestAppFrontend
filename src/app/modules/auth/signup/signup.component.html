@@ -6,29 +6,59 @@
             </div>
 
             <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                <!-- Email Field -->
                 <nz-form-item>
-                    <nz-form-control nzHasFeedback nzErrorTip="The input is not valid E-mail!">
+                    <nz-form-control nzHasFeedback [nzErrorTip]="emailErrorTpl">
                         <input nz-input placeholder="E-mail" formControlName="email" />
+                        <ng-template #emailErrorTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">
+                                Email is required.
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('email')">
+                                Please enter a valid email.
+                            </ng-container>
+                        </ng-template>
                     </nz-form-control>
                 </nz-form-item>
 
+                <!-- Password Field -->
                 <nz-form-item>
-                    <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Password!">
+                    <nz-form-control nzHasFeedback [nzErrorTip]="passwordErrorTpl">
                         <input nz-input placeholder="Password" type="password" formControlName="password" />
+                        <ng-template #passwordErrorTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">
+                                Password is required.
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('minlength')">
+                                Password must be at least 4 characters long.
+                            </ng-container>
+                        </ng-template>
                     </nz-form-control>
                 </nz-form-item>
 
+                <!-- Name Field -->
                 <nz-form-item>
-                    <nz-form-control nzHasFeedback nzErrorTip="The input is not valid Name!">
-                      <input nz-input placeholder="Name" formControlName="name" />
+                    <nz-form-control nzHasFeedback [nzErrorTip]="nameErrorTpl">
+                        <input nz-input placeholder="Name" formControlName="name" />
+                        <ng-template #nameErrorTpl let-control>
+                            <ng-container *ngIf="control.hasError('required')">
+                                Name is required.
+                            </ng-container>
+                            <ng-container *ngIf="control.hasError('minlength')">
+                                Name must be at least 2 characters long.
+                            </ng-container>
+                        </ng-template>
                     </nz-form-control>
-                  </nz-form-item>
-                  
-                  <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Register</button>
-                  
-                  <p>Or <a routerLink="/login">login now!</a></p>
-                  
+                </nz-form-item>
 
+                <!-- Submit Button -->
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'"
+                    [disabled]="validateForm.invalid">
+                    Register
+                </button>
+
+                <!-- Login Link -->
+                <p>Or <a routerLink="/login">login now!</a></p>
             </form>
         </div>
     </div>
