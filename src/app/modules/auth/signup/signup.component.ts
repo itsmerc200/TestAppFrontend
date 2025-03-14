@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
 
   submitForm() {  
     this.authService.register(this.validateForm.value).subscribe(res => {
-        this.message.success('Registration successful!', { nzDuration: 5000 });
+        this.message.success('Registration successful!', { nzDuration: 4000 });
          
 
        this.router.navigateByUrl("/login"); 

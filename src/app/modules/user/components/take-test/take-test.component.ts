@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SharedModule } from '../../../shared/shared.module';
 import { TestService } from '../../services/test.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,13 +12,14 @@ import { UserStorageService } from '../../../auth/services/user-storage.service'
   templateUrl: './take-test.component.html',
   styleUrl: './take-test.component.css'
 })
-export class TakeTestComponent {
+export class TakeTestComponent implements OnInit, OnDestroy {
   questions: any[] = [];
   testId: any;
   selectedAnswers: { [key: number]: string } = {};
   timeRemaining: number = 0;
   interval: any;
   isSubmitted: boolean = false; // 🛑 Prevents multiple submissions
+  isComponentActive: boolean = true; // 🛑 Tracks if the component is still active
 
   constructor(
     private testService: TestService,
@@ -47,7 +48,9 @@ export class TakeTestComponent {
         this.timeRemaining--;
       } else {
         this.clearTimer();
-        this.submitAnswers();
+        if (this.isComponentActive) { // 🛑 Only auto-submit if the component is still active
+          this.submitAnswers();
+        }
       }
     }, 1000);
   }
@@ -95,5 +98,10 @@ export class TakeTestComponent {
         this.message.error(`Error: ${error.error}`, { nzDuration: 4000 });
       }
     );
+  }
+
+  ngOnDestroy() {
+    this.isComponentActive = false; // 🛑 Mark component as inactive
+    this.clearTimer(); // 🛑 Clear the timer when the component is destroyed
   }
 }

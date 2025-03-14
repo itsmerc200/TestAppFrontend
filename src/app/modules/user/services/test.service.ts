@@ -31,6 +31,4 @@ export class TestService {
     return this.http.get(BASIC_URL + `api/test/test-result/${UserStorageService.grtUserId()}`);
   }
 
-  
-
 }
