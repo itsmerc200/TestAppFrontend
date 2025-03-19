@@ -1,24 +1,33 @@
 <div style="padding: 20px;">
-    <nz-table #basicTable [nzData]="resultsData">
-        <thead>
+    <!-- Search Bar -->
+    <div style="margin-bottom: 20px;">
+        <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input nz-input placeholder="Search by test name or user name" [(ngModel)]="searchText" (input)="filterResults()" />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+            <span nz-icon nzType="search"></span>
+        </ng-template>
+    </div>
 
+    <!-- Test Results Table -->
+    <nz-table #basicTable [nzData]="filteredResultsData">
+        <thead>
             <tr>
-            <th>Test Name</th>
-            <th>User Name</th>
-            <th>Total Question</th>
-            <th>Correct Answers</th>
-            <th>Percentage</th>
+                <th>Test Name</th>
+                <th>User Name</th>
+                <th>Total Question</th>
+                <th>Correct Answers</th>
+                <th>Percentage</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of basicTable.data">
-                <td>{{data.testName}}</td>
-                <td>{{data.userName}}</td>
-                <td>{{data.totalQuestions}}</td>
-                <td>{{data.correctAnswer}}</td>
-                <td>{{data.percentage}}</td>
+                <td>{{ data.testName }}</td>
+                <td>{{ data.userName }}</td>
+                <td>{{ data.totalQuestions }}</td>
+                <td>{{ data.correctAnswer }}</td>
+                <td>{{ data.percentage }}</td>
             </tr>
         </tbody>
     </nz-table>
 </div>
-

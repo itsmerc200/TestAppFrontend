@@ -1,7 +1,20 @@
 <div class="main">
+    <!-- Search Bar -->
+    <div nz-row style="margin-bottom: 20px;">
+        <div nz-col nzSpan="24">
+            <nz-input-group [nzSuffix]="suffixIconSearch">
+                <input nz-input placeholder="Search test by name" [(ngModel)]="searchText" (input)="filterTests()" />
+            </nz-input-group>
+            <ng-template #suffixIconSearch>
+                <span nz-icon nzType="search"></span>
+            </ng-template>
+        </div>
+    </div>
+
+    <!-- Test Cards -->
     <div nz-row>
         <div nz-col nzSpan="24" style="margin-bottom: 20px;">
-            <span style="margin: 20px;" *ngFor="let test of test">
+            <span style="margin: 20px;" *ngFor="let test of paginatedTests">
                 <nz-card [nzBordered]="true" class="test" nzTitle="{{ test.title }}">
                     <p><strong>Time :</strong> {{ getFormatedTime(test.time) }}</p>
                     <p><strong>Description :</strong> {{ test.description }}</p>
@@ -22,6 +35,18 @@
                     </div>
                 </nz-card>
             </span>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div nz-row>
+        <div nz-col nzSpan="24" style="text-align: right; margin-top: 20px;">
+            <nz-pagination
+                [nzPageIndex]="currentPage"
+                [nzPageSize]="pageSize"
+                [nzTotal]="filteredTests.length"
+                (nzPageIndexChange)="onPageChange($event)"
+            ></nz-pagination>
         </div>
     </div>
 </div>
