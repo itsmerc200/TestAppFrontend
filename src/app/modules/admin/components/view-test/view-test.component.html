@@ -29,6 +29,12 @@
         </label>
     </div>
 
+    <!-- ✅ Correct Answer Field -->
+    <p>Correct Answer: <span style="color: green; font-weight: bold;">{{ question.correctOption }}</span></p>
+
+    <!-- Edit Button -->
+    <button [routerLink]="['/admin/edit-question', question.id]" class="edit-button">Edit</button>
+
     <!-- Delete Button -->
-    <button (click)="deleteQuestion(question.id)" style="color: red;">Delete</button>
+    <button (click)="deleteQuestion(question.id)" class="delete-button">Delete</button>
 </div>

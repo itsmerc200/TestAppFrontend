@@ -13,11 +13,10 @@
                         <button nz-button nzType="primary" routerLink="/admin/add-question/{{ test.id }}">
                             Add Question
                         </button>
-                        <button 
-                            nz-button 
-                            nzType="primary" 
-                            [nzDanger]="true" 
-                            (click)="deleteTest(test.id)">
+                        <button nz-button nzType="primary" routerLink="/admin/edit-test/{{ test.id }}">
+                            Edit Test
+                        </button>
+                        <button nz-button nzType="primary" [nzDanger]="true" (click)="deleteTest(test.id)">
                             Delete Test
                         </button>
                     </div>

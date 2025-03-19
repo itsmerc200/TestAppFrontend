@@ -1,0 +1,36 @@
+<h2>Edit Question</h2>
+<form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Question Text:</label>
+    <input type="text" formControlName="questionText" />
+  </div>
+
+  <div>
+    <label>Option A:</label>
+    <input type="text" formControlName="optionA" />
+  </div>
+
+  <div>
+    <label>Option B:</label>
+    <input type="text" formControlName="optionB" />
+  </div>
+
+  <div>
+    <label>Option C:</label>
+    <input type="text" formControlName="optionC" />
+  </div>
+
+  <div>
+    <label>Option D:</label>
+    <input type="text" formControlName="optionD" />
+  </div>
+
+  <div>
+    <label>Correct Answer:</label>
+    <input type="text" formControlName="correctOption" />
+  </div>
+
+  <button type="submit">Update Question</button>
+
+  
+</form>

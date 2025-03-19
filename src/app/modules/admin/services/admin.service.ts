@@ -43,8 +43,19 @@ export class AdminService {
   uploadQuestions(testId: number, formData: FormData): Observable<any> {
     return this.http.post(BASIC_URL + `api/test/upload-questions/${testId}`, formData, { responseType: 'text' });
   }
+  
+  getQuestionDetails(questionId: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/test/question/${questionId}`);
+  }
 
-  // uploadQuestionsInTest(testId: number, formData: FormData): Observable<any> {
-  //   return this.http.post(`${BASIC_URL}api/test/upload-questions/${testId}`, formData, { responseType: 'text' });
-  // }
+  updateTest(testId: number, testDto: any): Observable<any> {
+    return this.http.put(BASIC_URL + `api/test/${testId}`, testDto);
+  }
+
+  updateQuestion(questionId: number, questionDto: any): Observable<any> {
+    console.log('Updating question with ID:', questionId, 'Data:', questionDto); // Debug log
+    return this.http.put(`${BASIC_URL}api/test/question/${questionId}`, questionDto);
+  }
+  
+  
 }

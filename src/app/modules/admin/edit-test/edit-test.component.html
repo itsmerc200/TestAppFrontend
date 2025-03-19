@@ -1,0 +1,22 @@
+<div class="edit-test-container">
+    <nz-spin *ngIf="isLoading" nzTip="Loading test details..."></nz-spin>
+  
+    <!-- Only render the form if data is loaded -->
+    <form *ngIf="isDataLoaded" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="title">Title:</label>
+        <input id="title" [(ngModel)]="testDetails.title" name="title" required>
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" [(ngModel)]="testDetails.description" name="description" required></textarea>
+      </div>
+      <div>
+        <label for="time">Time (Seconds Per Question):</label>
+        <input id="time" type="number" [(ngModel)]="testDetails.time" name="time" required>
+      </div>
+      <button type="submit" [disabled]="isUpdating">
+        {{ isUpdating ? 'Updating...' : 'Update Test' }}
+      </button>
+    </form>
+  </div>
